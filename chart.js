@@ -4,6 +4,7 @@ import { getChartData } from "./asana.ts"
 
 
 const data = await getChartData()
+const currentTime = new Date
 
 const chartDataJson = {
   type: 'bar',
@@ -12,7 +13,7 @@ const chartDataJson = {
     plugins: {
       title: {
         display: true,
-        text: 'タスク完了数'
+        text: `タスク完了数 at ${currentTime.toString()}`
       },
     },
     responsive: true,
