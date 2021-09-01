@@ -81,6 +81,7 @@ type DataSet = {
   backgroundColor: string;
 };
 
+
 const generageChartData = (
   startDateString: string,
   tasks: Task[],
