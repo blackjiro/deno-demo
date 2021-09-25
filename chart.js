@@ -43,6 +43,9 @@ function Chart({ chartDataJson, id }) {
 }
 
 
+
+addEventListener("fetch", (event) => {
+  // renderToString generates html string from JSX components.
 const body = renderToString(html`
   <html>
     <head>
@@ -53,9 +56,6 @@ const body = renderToString(html`
     </body>
   </html>
 `);
-
-addEventListener("fetch", (event) => {
-  // renderToString generates html string from JSX components.
   const response = new Response(body, {
     headers: { "content-type": "text/html; charset=utf-8" },
   });
