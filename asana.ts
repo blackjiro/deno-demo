@@ -81,7 +81,6 @@ type DataSet = {
   backgroundColor: string;
 };
 
-
 const generageChartData = (
   startDateString: string,
   tasks: Task[],
@@ -97,7 +96,8 @@ const generageChartData = (
 
   const datasets: DataSet[] = tags.map((tag) => {
     const data = genTaskCounts(days, tasks, tag);
-    const backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    const backgroundColor = "#" +
+      Math.floor(Math.random() * 16777215).toString(16);
     return { label: tag.name, data, backgroundColor };
   });
 
@@ -115,13 +115,13 @@ export const getChartData = async () => {
   const tasks: Task[] = await getResponse(tasksUrl);
   const tags = await getTagsFromTasks(tasks);
   const result = generageChartData(startDate, tasks, tags);
-  console.log(result);
+
   return result;
 };
 
 export const getCompletedTaskNames = async (): Promise<string[]> => {
   const tasks: Task[] = await getResponse(tasksUrl);
-  return tasks.filter(task => task.completed).map(task=>task.name)
-}
+  return tasks.filter((task) => task.completed).map((task) => task.name);
+};
 
 export default getChartData;
