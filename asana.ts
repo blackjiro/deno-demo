@@ -17,9 +17,20 @@ const tasksFields = [
 const tasksUrl =
   `https://app.asana.com/api/1.0/projects/${projectId}/tasks?opt_fields=${
     tasksFields.join(",")
-  }&limit=100`;
+  }`;
 
 const startDate = "2021-08-01";
+
+const tagColorcodeMap: { [key: string]: string } = {
+  "UI/UX": "#00D4C8",
+  "改善": "#48DAFD",
+  "顧客要望": "#FF7512",
+  "feedback": "#FFA801",
+  "ops": "#E8ECEE",
+  "dev": "#FF78FF",
+  "bug": "#FB5779",
+  "security": "#48DAFD",
+};
 
 type Task = {
   gid: string;
@@ -96,8 +107,8 @@ const generageChartData = (
 
   const datasets: DataSet[] = tags.map((tag) => {
     const data = genTaskCounts(days, tasks, tag);
-    const backgroundColor = "#" +
-      Math.floor(Math.random() * 16777215).toString(16);
+    const backgroundColor = tagColorcodeMap[tag.name] || "#" +
+        Math.floor(Math.random() * 16777215).toString(16);
     return { label: tag.name, data, backgroundColor };
   });
 
