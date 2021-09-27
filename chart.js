@@ -35,7 +35,7 @@ function Chart({ chartDataJson, id }) {
   const modifiedJson = stringifyedData.replace(/"/g, "'");
 
   return html`
-    <canvas id="${id}" width="400" height="400"></canvas>
+    <canvas id="${id}" style="max-height: 700px; max-width: 1000px;"></canvas>
     <script>
       var ctx = document.getElementById('${id}').getContext('2d');
       var myChart = new Chart(ctx, ${modifiedJson});
